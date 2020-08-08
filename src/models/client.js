@@ -5,12 +5,12 @@ const clientSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    min: 3,
+    minlength: 3,
   },
   lastName: {
     type: String,
     required: true,
-    min: 3,
+    minlength: 3,
   },
   email: {
     type: String,
@@ -21,12 +21,12 @@ const clientSchema = new mongoose.Schema({
     type: String,
     required: true,
     match: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/,
-    min: 1,
+    minlength: 1,
   },
   phone: {
-    type: number,
+    type: Number,
     required: true,
-    min: 10,
+    minlength: 10,
   },
   adress: {
     type: String,
@@ -36,7 +36,7 @@ const clientSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  profilepicture: {
+  profilePicture: {
     type: String,
     required: true,
   },

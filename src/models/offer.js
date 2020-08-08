@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 // schema for laboral offer
 const offerSchema = new mongoose.Schema({
-  clientid: {
+  clientId: {
     Number,
     required: true,
   },
-  clientphotografh: {
+  clientPhotograph: {
     Number,
     required: true,
   },
@@ -14,13 +14,13 @@ const offerSchema = new mongoose.Schema({
   decription: {
     type: String,
     required: true,
-    max: 30,
+    maxlength: 30,
   },
-  eventtype: {
+  eventType: {
     type: String,
     required: true,
   },
-  eventadress: {
+  eventAdress: {
     type: String,
     required: true,
   },
@@ -28,11 +28,11 @@ const offerSchema = new mongoose.Schema({
     type: date,
     required: true,
   },
-  eventduration: {
+  eventDuration: {
     type: String,
     required: true,
   },
-  postdate: {
+  postDate: {
     type: Date,
     default: Date.now,
   },
