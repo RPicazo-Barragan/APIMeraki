@@ -3,7 +3,6 @@ const router = express.Router();
 
 const clients = require("../usecases/clients");
 const authClient = require("../middlewares/authClient");
-const client = require("../models/client");
 
 router.get("/", async (request, response) => {
   try {
@@ -33,7 +32,13 @@ router.get("/:id", async (request, response) => {
         client,
       },
     });
-  } catch (error) {}
+  } catch (error) {
+    response.status(400);
+    response.json({
+      success: false,
+      error: error.message,
+    });
+  }
 });
 
 router.patch("/:id", authClient, async (request, response) => {

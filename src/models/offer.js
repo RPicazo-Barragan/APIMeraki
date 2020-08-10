@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 // schema for laboral offer
 const offerSchema = new mongoose.Schema({
   clientid: {
-    Number,
+    type: Number,
     required: true,
   },
-  clientphotografh: {
-    Number,
+  photografhid: {
+    type: Number,
     required: true,
   },
 
-  decription: {
+  description: {
     type: String,
     required: true,
     max: 30,
@@ -24,8 +24,8 @@ const offerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
-    type: date,
+  eventdate: {
+    type: String,
     required: true,
   },
   eventduration: {
@@ -33,8 +33,8 @@ const offerSchema = new mongoose.Schema({
     required: true,
   },
   postdate: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    required: true,
   },
 });
 
