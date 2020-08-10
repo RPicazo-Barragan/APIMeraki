@@ -5,12 +5,12 @@ const clientSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    min: 3,
+    minlength: 3,
   },
   lastName: {
     type: String,
     required: true,
-    min: 3,
+    minlength: 3,
   },
   email: {
     type: String,
@@ -20,12 +20,11 @@ const clientSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    min: 1,
   },
   phone: {
     type: Number,
     required: true,
-    min: 10,
+    minlength: 10,
   },
   adress: {
     type: String,
@@ -35,7 +34,7 @@ const clientSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  profilepicture: {
+  profilePicture: {
     type: String,
     required: true,
   },
