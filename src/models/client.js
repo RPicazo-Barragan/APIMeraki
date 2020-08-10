@@ -20,8 +20,7 @@ const clientSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 1,
-  },
+ },
   phone: {
     type: Number,
     required: true,
