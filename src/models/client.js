@@ -20,7 +20,6 @@ const clientSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    match: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/,
     minlength: 1,
   },
   phone: {
