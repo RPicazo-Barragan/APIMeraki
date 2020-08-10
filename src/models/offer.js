@@ -2,39 +2,39 @@ const mongoose = require("mongoose");
 
 // schema for laboral offer
 const offerSchema = new mongoose.Schema({
-  clientid: {
-    type: Number,
+  clientId: {
+    Number,
     required: true,
   },
-  photografhid: {
-    type: Number,
+  clientPhotograph: {
+    Number,
     required: true,
   },
 
-  description: {
+  decription: {
     type: String,
     required: true,
-    max: 30,
+    maxlength: 30,
   },
-  eventtype: {
-    type: String,
-    required: true,
-  },
-  eventadress: {
+  eventType: {
     type: String,
     required: true,
   },
-  eventdate: {
+  eventAdress: {
     type: String,
     required: true,
   },
-  eventduration: {
+  date: {
+    type: date,
+    required: true,
+  },
+  eventDuration: {
     type: String,
     required: true,
   },
-  postdate: {
-    type: String,
-    required: true,
+  postDate: {
+    type: Date,
+    default: Date.now,
   },
 });
 
