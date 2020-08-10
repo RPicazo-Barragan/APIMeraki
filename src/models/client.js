@@ -35,7 +35,7 @@ const clientSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  profilepicture: {
+  profilePicture: {
     type: String,
     required: true,
   },
