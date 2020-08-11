@@ -20,7 +20,6 @@ const photograperSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    match: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/,
     min: 1,
   },
 
@@ -47,7 +46,7 @@ const photograperSchema = new mongoose.Schema({
     required: true,
   },
 
-  photo: {
+  photourl: {
     type: String,
     required: true,
   },

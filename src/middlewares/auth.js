@@ -1,7 +1,7 @@
 const jwt = require("../lib/jwt");
 const Client = require("../models/client");
 
-async function authClient(request, response, next) {
+async function auth(request, response, next) {
   try {
     //todas las llamadas deberian de tener un header Authorization con un token valido
     const { authorization } = request.headers;
@@ -19,4 +19,4 @@ async function authClient(request, response, next) {
   }
 }
 
-module.exports = authClient;
+module.exports = auth;

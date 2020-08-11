@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-const offers = require("../usecases/offers");
+const photographers = require("../usecases/photograper");
 const auth = require("../middlewares/auth");
 
 router.get("/", auth, async (request, response) => {
   try {
-    const allOffers = await offers.getAll();
+    const allPhotograpers = await photographers.getAll();
     response.json({
       success: true,
       data: {
-        offers: allOffers,
+        photograpers: allPhotograpers,
       },
     });
   } catch (error) {
@@ -24,37 +24,16 @@ router.get("/", auth, async (request, response) => {
 
 router.get("/:id", auth, async (request, response) => {
   try {
-    const offerId = request.params.id;
-    const offer = await offers.getById(offerId);
+    const photographerId = request.params.id;
+    const photographer = await photographers.getById(photographerId);
     response.json({
-      succes: true,
+      success: true,
       data: {
-        offer,
+        photographer,
       },
     });
   } catch (error) {
     response.status(400);
-    response.json({
-      success: false,
-      error: error.message,
-    });
-  }
-});
-
-router.post("/", auth, async (request, response) => {
-  try {
-    console.log("offer: ", request.offer);
-    const newOfferData = request.body;
-    const newOffer = await offers.create(newOfferData);
-    response.json({
-      success: true,
-      data: {
-        newOffer,
-      },
-      message: "Se ha creado correctamente ",
-    });
-  } catch (error) {
-    response.status(error.status || 400);
     response.json({
       success: false,
       error: error.message,
@@ -66,16 +45,16 @@ router.patch("/:id", auth, async (request, response) => {
   try {
     const id = request.params.id;
     const dataToUpdate = request.body;
-    const offerUpdated = await offers.update(id, dataToUpdate);
+    const photographerUpdated = await photographers.update(id, dataToUpdate);
     response.json({
       success: true,
       data: {
-        offerUpdated,
+        photographerUpdated,
       },
-      message: "Offer updated",
+      message: "Datos actualizados correctamente",
     });
   } catch (error) {
-    response.status(400);
+    response.status(error.status || 400);
     response.json({
       success: false,
       error: error.message,
@@ -86,13 +65,13 @@ router.patch("/:id", auth, async (request, response) => {
 router.delete("/:id", auth, async (request, response) => {
   try {
     const id = request.params.id;
-    const offerToDelete = await clients.deletee(id);
+    const photographerToDelete = await photographers.deletee(id);
     response.json({
       success: true,
       data: {
-        offerToDelete,
+        photographerToDelete,
       },
-      message: "Offer deleted",
+      message: "Se ha borrado correctamente",
     });
   } catch (error) {
     response.status(error.status || 400);
