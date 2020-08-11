@@ -2,28 +2,28 @@ const express = require("express");
 const router = express.Router();
 
 const photographs = require("../usecases/photograper");
-const photograph = require("../models/photograper");
 const authPhotograph = require("../middlewares/authPhothograph");
+const photograph = require("../models/photograper");
 
 router.get("/", async (req, res) => {
   try {
     const allPhotographs = await photographs.getAll();
-    response.json({
+    res.json({
       succes: true,
       data: {
         photographs: allPhotographs,
       },
     });
   } catch (error) {
-    response.status(400);
-    response.json({
+    res.status(400);
+    res.json({
       succes: false,
       error: error.message,
     });
   }
 });
 
-router.get("/id", async (res, req) => {
+router.get(":id", async (res, req) => {
   try {
     const pothographId = req.params.pothographId;
     const photograph = await photographs.getById(pothographId);
@@ -34,19 +34,22 @@ router.get("/id", async (res, req) => {
       },
     });
   } catch (error) {
-    response.status(400);
-    response.json({
+    res.status(400);
+    res.json({
       succes: false,
       error: error.message,
     });
   }
 });
 
-router.patch("/id", authPhotograph, async (res, req) => {
+router.patch("/:id", authPhotograph, async (res, req) => {
   try {
     const idPhotograph = req.params.id;
-    const dataUpdate = request.body;
-    const photographUpdate = await photographs.update(idPhotograph, dataUpdate);
+    const newPhotograph = request.body;
+    const photographUpdate = await photographs.update(
+      idPhotograph,
+      newPhotograph
+    );
     res.json({
       succes: true,
       data: {
@@ -62,24 +65,24 @@ router.patch("/id", authPhotograph, async (res, req) => {
   }
 });
 
-router.delete('/id,'authPhotograph,async(res,req)=>{
+router.delete("/:id,", async (res, req) => {
   try {
-    const idPhotograph=req.params.id
-    const photographDelete =await photographs.deletee(idPhotograph)
+    const idPhotograph = req.params.id;
+    const photographDelete = await photographs.deletee(idPhotograph);
     res.json({
-      succes:true,
-      data :{
-        photographDelete
+      succes: true,
+      data: {
+        photographDelete,
       },
-      message : ('Se eliminó correctamente')
-    })
+      message: "Se eliminó correctamente",
+    });
   } catch (error) {
-    res.status(400)
+    res.status(400);
     res.json({
-      succes:false,
-      error : error.message
-    })
+      succes: false,
+      error: error.message,
+    });
   }
-})
+});
 
 module.exports = router;

@@ -6,7 +6,7 @@ async function authPhotograph(req, res, next) {
     const authorization = req.headers;
     const decodedToken = jwt.verify(authorization);
     const photograph = await Photograph.findById(decodedToken.id);
-    res.photograph = photograph;
+    req.photograph = photograph;
     next();
   } catch (error) {
     res.json({
