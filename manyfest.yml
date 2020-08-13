@@ -1,0 +1,4 @@
+applications:
+  - name: Meraky
+    random-route: true
+    memory: 64M
