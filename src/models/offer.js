@@ -25,7 +25,7 @@ const offerSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: date,
+    fecha: new Date(),
     required: true,
   },
   eventDuration: {
